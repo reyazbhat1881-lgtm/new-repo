@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Practice SSC CGL, CHSL, MTS typing tests online. Free 15-minute English and Hindi typing tests following official SSC standards. Improve your typing speed and accuracy.">
+    <meta name="keywords" content="SSC typing test, SSC CGL typing, SSC CHSL typing, online typing test, government typing test, typing speed test">
+    <meta name="author" content="SSC Typing Test">
+    <meta property="og:title" content="SSC Typing Test - Practice Online for Government Exams">
+    <meta property="og:description" content="Free online typing tests for SSC CGL, CHSL, MTS exams. Practice with official standards and improve your typing speed.">
+    <meta property="og:type" content="website">
+    <title>SSC Typing Test - Free Online Practice for Government Exams</title>
+    <link rel="stylesheet" href="SSC.css">
+</head>
+<body>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    SSC Typing Test
+                </div>
+                <nav>
+                    <a href="#home" class="nav-link active" data-page="home">Home</a>
+                    <a href="#about" class="nav-link" data-page="about">About</a>
+                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+                    <a href="#privacy" class="nav-link" data-page="privacy">Privacy Policy</a>
+                    <a href="#terms" class="nav-link" data-page="terms">Terms</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="homePage">
+        <div class="hero">
+            <div class="container">
+                <h1>SSC Typing Test Practice</h1>
+                <p>Master your typing skills for SSC CGL, CHSL & MTS exams with our free online platform</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2 style="color: #4a5fc1; margin-bottom: 10px;">Available Typing Tests</h2>
+                <p style="color: #666;">Choose from our collection of SSC standard typing tests</p>
+                
+                <div class="tests-grid" id="testsGrid">
+                    <!-- Tests will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="typingPage" class="typing-interface">
+        <div class="container">
+            <div class="content-section">
+                <button class="back-btn" onclick="goBack()">← Back to Tests</button>
+                
+                <h2 id="testTitle" style="color: #4a5fc1; margin: 20px 0;">SSC CGL Typing Test</h2>
+                
+                <div class="timer" id="timer">15:00</div>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <h4>Speed (WPM)</h4>
+                        <div class="value" id="wpm">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Accuracy</h4>
+                        <div class="value" id="accuracy">100%</div>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Characters</h4>
+                        <div class="value" id="chars">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Errors</h4>
+                        <div class="value" id="errors">0</div>
+                    </div>
+                </div>
+
+                <div class="text-display" id="textDisplay"></div>
+                
+                <textarea class="typing-input" id="typingInput" placeholder="Start typing here..." rows="5"></textarea>
+                
+                <button class="start-btn" onclick="resetTest()">Reset Test</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutPage" class="content-section container" style="display: none;">
+        <h2 style="color: #4a5fc1;">About SSC Typing Test</h2>
+        <p style="margin: 20px 0;">SSC Typing Test is a free online platform designed to help candidates prepare for typing tests required in various SSC examinations including CGL, CHSL, and MTS.</p>
+        
+        <h3 style="color: #4a5fc1; margin-top: 30px;">Our Mission</h3>
+        <p style="margin: 15px 0;">To provide accessible, high-quality typing practice that follows official SSC standards, helping thousands of aspirants improve their typing speed and accuracy.</p>
+        
+        <h3 style="color: #4a5fc1; margin-top: 30px;">Key Features</h3>
+        <ul style="margin: 15px 0; padding-left: 20px;">
+            <li>15-minute tests following SSC standards</li>
+            <li>Real-time speed and accuracy tracking</li>
+            <li>Multiple test passages for varied practice</li>
+            <li>English and Hindi language support</li>
+            <li>Free and unlimited practice</li>
+        </ul>
+    </div>
+
+    <div id="contactPage" class="content-section container" style="display: none;">
+        <h2 style="color: #4a5fc1;">Contact Us</h2>
+        <p style="margin: 20px 0;">Have questions or suggestions? We'd love to hear from you!</p>
+        
+        <div style="margin: 30px 0;">
+            <p><strong>Email:</strong> support@ssctypingtest.com</p>
+            <p style="margin-top: 10px;"><strong>Phone:</strong> +91-XXXXXXXXXX</p>
+            <p style="margin-top: 10px;"><strong>Address:</strong> New Delhi, India</p>
+        </div>
+        
+        <p style="margin-top: 30px;">For feedback and suggestions, please email us. We typically respond within 24-48 hours.</p>
+    </div>
+
+    <div id="privacyPage" class="content-section container" style="display: none;">
+        <h2 style="color: #4a5fc1;">Privacy Policy</h2>
+        <p style="margin: 20px 0;"><em>Last updated: December 2025</em></p>
+        
+        <h3 style="margin-top: 30px;">Information We Collect</h3>
+        <p style="margin: 15px 0;">We collect minimal information necessary to provide our services. This includes usage statistics and performance data from typing tests.</p>
+        
+        <h3 style="margin-top: 30px;">How We Use Your Information</h3>
+        <p style="margin: 15px 0;">Your typing test data is used solely for displaying your performance metrics. We do not share personal information with third parties.</p>
+        
+        <h3 style="margin-top: 30px;">Data Security</h3>
+        <p style="margin: 15px 0;">We implement appropriate security measures to protect your information. All data is processed securely in your browser.</p>
+        
+        <h3 style="margin-top: 30px;">Your Rights</h3>
+        <p style="margin: 15px 0;">You have the right to access, correct, or delete your personal information. Contact us for any privacy-related concerns.</p>
+    </div>
+
+    <div id="termsPage" class="content-section container" style="display: none;">
+        <h2 style="color: #4a5fc1;">Terms and Conditions</h2>
+        <p style="margin: 20px 0;"><em>Last updated: December 2025</em></p>
+        
+        <h3 style="margin-top: 30px;">Use of Service</h3>
+        <p style="margin: 15px 0;">This platform is provided free of charge for educational purposes. By using this service, you agree to use it responsibly and in accordance with applicable laws.</p>
+        
+        <h3 style="margin-top: 30px;">Disclaimer</h3>
+        <p style="margin: 15px 0;">While we strive to maintain accuracy, we do not guarantee that our tests exactly replicate official SSC typing tests. This platform is for practice purposes only.</p>
+        
+        <h3 style="margin-top: 30px;">Intellectual Property</h3>
+        <p style="margin: 15px 0;">All content on this website is owned by SSC Typing Test. Unauthorized reproduction is prohibited.</p>
+        
+        <h3 style="margin-top: 30px;">Limitation of Liability</h3>
+        <p style="margin: 15px 0;">We are not liable for any damages arising from the use of this service. Use at your own risk.</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home" data-page="home">Home</a>
+                <a href="#about" data-page="about">About</a>
+                <a href="#contact" data-page="contact">Contact</a>
+                <a href="#privacy" data-page="privacy">Privacy Policy</a>
+                <a href="#terms" data-page="terms">Terms & Conditions</a>
+            </div>
+            <p style="margin-top: 20px; color: #666;">© 2025 SSC Typing Test. All rights reserved.</p>
+            <p style="color: #999; font-size: 14px;">Practice makes perfect. Good luck with your SSC exams! 🎯</p>
+        </div>
+    </footer>
+
+<script src="SSC.js"></script>
+</body>
+</html>

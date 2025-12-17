@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Practice SSC CGL, CHSL, MTS typing tests online. Free 15-minute English and Hindi typing tests following official SSC standards. Improve your typing speed and accuracy.">
+    <meta name="keywords" content="SSC typing test, SSC CGL typing, SSC CHSL typing, online typing test, government typing test, typing speed test">
+    <meta name="author" content="SSC Typing Test">
+    <meta property="og:title" content="SSC Typing Test - Practice Online for Government Exams">
+    <meta property="og:description" content="Free online typing tests for SSC CGL, CHSL, MTS exams. Practice with official standards and improve your typing speed.">
+    <meta property="og:type" content="website">
+    <title>SSC Typing Test - Free Online Practice for Government Exams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: #667eea;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .test-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .test-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .test-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .test-info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .language-select {
+            padding: 10px;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 16px;
+            margin: 15px 0;
+            cursor: pointer;
+        }
+
+        .language-select option {
+            background: #667eea;
+            color: white;
+        }
+
+        .start-btn {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .typing-interface {
+            display: none;
+        }
+
+        .typing-interface.active {
+            display: block;
+        }
+
+        .timer {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .text-display {
+            background: #f5f5f5;
+            padding: 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            line-height: 2;
+            margin: 20px 0;
+            min-height: 200px;
+        }
+
+        .text-display span.current {
+            background: #ffd700;
+            padding: 2px;
+        }
+
+        .text-display span.correct {
+            color: green;
+        }
+
+        .text-display span.incorrect {
+            color: red;
+            background: #ffcccc;
+        }
+
+        .typing-input {
+            width: 100%;
+            padding: 20px;
+            font-size: 18px;
+            border: 3px solid #667eea;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-box h4 {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .stat-box .value {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .back-btn:hover {
+            background: #5a6268;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .tests-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    ⌨️ SSC Typing Test
+                </div>
+                <nav>
+                    <a href="#home" class="nav-link active" data-page="home">Home</a>
+                    <a href="#about" class="nav-link" data-page="about">About</a>
+                    <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+                    <a href="#privacy" class="nav-link" data-page="privacy">Privacy Policy</a>
+                    <a href="#terms" class="nav-link" data-page="terms">Terms</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="homePage">
+        <div class="hero">
+            <div class="container">
+                <h1>SSC Typing Test Practice</h1>
+                <p>Master your typing skills for SSC CGL, CHSL & MTS exams with our free online platform</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="content-section">
+                <h2 style="color: #667eea; margin-bottom: 10px;">Available Typing Tests</h2>
+                <p style="color: #666;">Choose from our collection of SSC standard typing tests</p>
+                
+                <div class="tests-grid" id="testsGrid">
+                    <!-- Tests will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="typingPage" class="typing-interface">
+        <div class="container">
+            <div class="content-section">
+                <button class="back-btn" onclick="goBack()">← Back to Tests</button>
+                
+                <h2 id="testTitle" style="color: #667eea; margin: 20px 0;">SSC CGL Typing Test</h2>
+                
+                <div class="timer" id="timer">15:00</div>
+                
+                <div class="stats">
+                    <div class="stat-box">
+                        <h4>Speed (WPM)</h4>
+                        <div class="value" id="wpm">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Accuracy</h4>
+                        <div class="value" id="accuracy">100%</div>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Characters</h4>
+                        <div class="value" id="chars">0</div>
+                    </div>
+                    <div class="stat-box">
+                        <h4>Errors</h4>
+                        <div class="value" id="errors">0</div>
+                    </div>
+                </div>
+
+                <div class="text-display" id="textDisplay"></div>
+                
+                <textarea class="typing-input" id="typingInput" placeholder="Start typing here..." rows="5"></textarea>
+                
+                <button class="start-btn" onclick="resetTest()">Reset Test</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="aboutPage" class="content-section container" style="display: none;">
+        <h2 style="color: #667eea;">About SSC Typing Test</h2>
+        <p style="margin: 20px 0;">SSC Typing Test is a free online platform designed to help candidates prepare for typing tests required in various SSC examinations including CGL, CHSL, and MTS.</p>
+        
+        <h3 style="color: #667eea; margin-top: 30px;">Our Mission</h3>
+        <p style="margin: 15px 0;">To provide accessible, high-quality typing practice that follows official SSC standards, helping thousands of aspirants improve their typing speed and accuracy.</p>
+        
+        <h3 style="color: #667eea; margin-top: 30px;">Key Features</h3>
+        <ul style="margin: 15px 0; padding-left: 20px;">
+            <li>15-minute tests following SSC standards</li>
+            <li>Real-time speed and accuracy tracking</li>
+            <li>Multiple test passages for varied practice</li>
+            <li>English and Hindi language support</li>
+            <li>Free and unlimited practice</li>
+        </ul>
+    </div>
+
+    <div id="contactPage" class="content-section container" style="display: none;">
+        <h2 style="color: #667eea;">Contact Us</h2>
+        <p style="margin: 20px 0;">Have questions or suggestions? We'd love to hear from you!</p>
+        
+        <div style="margin: 30px 0;">
+            <p><strong>Email:</strong> support@ssctypingtest.com</p>
+            <p style="margin-top: 10px;"><strong>Phone:</strong> +91-XXXXXXXXXX</p>
+            <p style="margin-top: 10px;"><strong>Address:</strong> New Delhi, India</p>
+        </div>
+        
+        <p style="margin-top: 30px;">For feedback and suggestions, please email us. We typically respond within 24-48 hours.</p>
+    </div>
+
+    <div id="privacyPage" class="content-section container" style="display: none;">
+        <h2 style="color: #667eea;">Privacy Policy</h2>
+        <p style="margin: 20px 0;"><em>Last updated: December 2025</em></p>
+        
+        <h3 style="margin-top: 30px;">Information We Collect</h3>
+        <p style="margin: 15px 0;">We collect minimal information necessary to provide our services. This includes usage statistics and performance data from typing tests.</p>
+        
+        <h3 style="margin-top: 30px;">How We Use Your Information</h3>
+        <p style="margin: 15px 0;">Your typing test data is used solely for displaying your performance metrics. We do not share personal information with third parties.</p>
+        
+        <h3 style="margin-top: 30px;">Data Security</h3>
+        <p style="margin: 15px 0;">We implement appropriate security measures to protect your information. All data is processed securely in your browser.</p>
+        
+        <h3 style="margin-top: 30px;">Your Rights</h3>
+        <p style="margin: 15px 0;">You have the right to access, correct, or delete your personal information. Contact us for any privacy-related concerns.</p>
+    </div>
+
+    <div id="termsPage" class="content-section container" style="display: none;">
+        <h2 style="color: #667eea;">Terms and Conditions</h2>
+        <p style="margin: 20px 0;"><em>Last updated: December 2025</em></p>
+        
+        <h3 style="margin-top: 30px;">Use of Service</h3>
+        <p style="margin: 15px 0;">This platform is provided free of charge for educational purposes. By using this service, you agree to use it responsibly and in accordance with applicable laws.</p>
+        
+        <h3 style="margin-top: 30px;">Disclaimer</h3>
+        <p style="margin: 15px 0;">While we strive to maintain accuracy, we do not guarantee that our tests exactly replicate official SSC typing tests. This platform is for practice purposes only.</p>
+        
+        <h3 style="margin-top: 30px;">Intellectual Property</h3>
+        <p style="margin: 15px 0;">All content on this website is owned by SSC Typing Test. Unauthorized reproduction is prohibited.</p>
+        
+        <h3 style="margin-top: 30px;">Limitation of Liability</h3>
+        <p style="margin: 15px 0;">We are not liable for any damages arising from the use of this service. Use at your own risk.</p>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#home" data-page="home">Home</a>
+                <a href="#about" data-page="about">About</a>
+                <a href="#contact" data-page="contact">Contact</a>
+                <a href="#privacy" data-page="privacy">Privacy Policy</a>
+                <a href="#terms" data-page="terms">Terms & Conditions</a>
+            </div>
+            <p style="margin-top: 20px; color: #666;">© 2025 SSC Typing Test. All rights reserved.</p>
+            <p style="color: #999; font-size: 14px;">Practice makes perfect. Good luck with your SSC exams! 🎯</p>
+        </div>
+    </footer>
+
+    <script>
+        const tests = [
+            {
+                id: 1,
+                title: "SSC CGL Typing Test 1",
+                duration: 15,
+                text: "The quick brown fox jumps over the lazy dog. This is a standard typing test paragraph used to practice all letters of the alphabet. In the modern digital age, typing skills have become essential for almost every profession. Government jobs particularly require good typing speed and accuracy. The Staff Selection Commission conducts typing tests for various posts including Data Entry Operator and Lower Division Clerk positions. Candidates must achieve the minimum required speed while maintaining high accuracy to qualify for these positions. Regular practice is the key to improving your typing skills and building muscle memory."
+            },
+            {
+                id: 2,
+                title: "SSC CGL Typing Test 2",
+                duration: 15,
+                text: "India is a land of diverse cultures and rich heritage. From the snow-capped Himalayas in the north to the tropical beaches in the south, the country offers a variety of landscapes. The Indian economy has been growing rapidly in recent years, making it one of the fastest-growing major economies in the world. Technology and innovation have played a crucial role in this development. The youth of India are increasingly pursuing careers in technology, medicine, and government services. Education and skill development are priorities for the nation's progress and prosperity."
+            },
+            {
+                id: 3,
+                title: "SSC CHSL Typing Test 1",
+                duration: 15,
+                text: "Digital transformation has revolutionized the way we work and communicate. Cloud computing, artificial intelligence, and machine learning are no longer futuristic concepts but present-day realities. Organizations across the globe are adopting these technologies to improve efficiency and productivity. The government sector is also embracing digitization to provide better services to citizens. E-governance initiatives have made many services accessible online, reducing the need for physical presence. This shift has created new opportunities and challenges for the workforce."
+            },
+            {
+                id: 4,
+                title: "SSC CHSL Typing Test 2",
+                duration: 15,
+                text: "Environmental conservation is one of the most pressing issues of our time. Climate change, deforestation, and pollution are threatening the delicate balance of our ecosystem. It is crucial that we take immediate action to protect our planet for future generations. Sustainable practices such as renewable energy, waste management, and conservation efforts are essential. Every individual can contribute by making conscious choices in their daily lives. The government and private sector must work together to implement policies that prioritize environmental protection while ensuring economic growth."
+            },
+            {
+                id: 5,
+                title: "SSC MTS Typing Test 1",
+                duration: 15,
+                text: "Communication is a fundamental skill in the professional world. The ability to express ideas clearly and effectively can make a significant difference in one's career. Written communication, in particular, requires attention to detail and proper grammar. In government offices, clear documentation and correspondence are essential for smooth operations. Typing speed and accuracy are valuable skills that enhance productivity. With practice and dedication, anyone can improve their typing abilities and become more efficient in their work."
+            },
+            {
+                id: 6,
+                title: "SSC MTS Typing Test 2",
+                duration: 15,
+                text: "Time management is a critical skill for success in any field. Learning to prioritize tasks and manage one's schedule effectively can lead to better productivity and reduced stress. In competitive examinations, time management becomes even more crucial as candidates must complete tests within strict time limits. Developing good habits early on can help in both personal and professional life. Setting goals, creating schedules, and staying organized are some strategies that can improve time management skills."
+            }
+        ];
+
+        let currentTest = null;
+        let timeLeft = 0;
+        let timerInterval = null;
+        let startTime = null;
+        let totalChars = 0;
+        let correctChars = 0;
+        let errorCount = 0;
+
+        function renderTests() {
+            const grid = document.getElementById('testsGrid');
+            grid.innerHTML = tests.map(test => `
+                <div class="test-card">
+                    <h3>${test.title}</h3>
+                    <div class="test-info">
+                        <div class="test-info-item">
+                            <span>Duration:</span>
+                            <span><strong>${test.duration} Minutes</strong></span>
+                        </div>
+                        <div class="test-info-item">
+                            <span>Type:</span>
+                            <span><strong>Practice Test</strong></span>
+                        </div>
+                    </div>
+                    <select class="language-select">
+                        <option value="english">English</option>
+                        <option value="hindi">Hindi (Coming Soon)</option>
+                    </select>
+                    <button class="start-btn" onclick="startTest(${test.id})">Start Typing Test →</button>
+                </div>
+            `).join('');
+        }
+
+        function startTest(testId) {
+            currentTest = tests.find(t => t.id === testId);
+            if (!currentTest) return;
+
+            document.getElementById('homePage').style.display = 'none';
+            document.getElementById('typingPage').style.display = 'block';
+            document.getElementById('testTitle').textContent = currentTest.title;
+            
+            timeLeft = currentTest.duration * 60;
+            totalChars = 0;
+            correctChars = 0;
+            errorCount = 0;
+            
+            displayText();
+            updateTimer();
+            updateStats();
+            
+            const input = document.getElementById('typingInput');
+            input.value = '';
+            input.focus();
+            
+            if (timerInterval) clearInterval(timerInterval);
+            startTime = Date.now();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function displayText() {
+            const display = document.getElementById('textDisplay');
+            display.innerHTML = currentTest.text.split('').map((char, i) => 
+                `<span id="char-${i}">${char}</span>`
+            ).join('');
+        }
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert('Time is up! Test completed.');
+                return;
+            }
+            timeLeft--;
+        }
+
+        function updateStats() {
+            const elapsedMinutes = (Date.now() - startTime) / 60000;
+            const wpm = elapsedMinutes > 0 ? Math.round((correctChars / 5) / elapsedMinutes) : 0;
+            const accuracy = totalChars > 0 ? Math.round((correctChars / totalChars) * 100) : 100;
+            
+            document.getElementById('wpm').textContent = wpm;
+            document.getElementById('accuracy').textContent = accuracy + '%';
+            document.getElementById('chars').textContent = totalChars;
+            document.getElementById('errors').textContent = errorCount;
+        }
+
+        document.getElementById('typingInput').addEventListener('input', function(e) {
+            if (!startTime) startTime = Date.now();
+            
+            const typed = e.target.value;
+            const original = currentTest.text;
+            
+            totalChars = typed.length;
+            correctChars = 0;
+            errorCount = 0;
+            
+            for (let i = 0; i < original.length; i++) {
+                const charElement = document.getElementById(`char-${i}`);
+                if (!charElement) continue;
+                
+                charElement.classList.remove('correct', 'incorrect', 'current');
+                
+                if (i < typed.length) {
+                    if (typed[i] === original[i]) {
+                        charElement.classList.add('correct');
+                        correctChars++;
+                    } else {
+                        charElement.classList.add('incorrect');
+                        errorCount++;
+                    }
+                } else if (i === typed.length) {
+                    charElement.classList.add('current');
+                }
+            }
+            
+            updateStats();
+            
+            if (typed === original) {
+                clearInterval(timerInterval);
+                alert('Congratulations! You completed the test!');
+            }
+        });
+
+        function resetTest() {
+            if (currentTest) {
+                startTest(currentTest.id);
+            }
+        }
+
+        function goBack() {
+            if (timerInterval) clearInterval(timerInterval);
+            document.getElementById('typingPage').style.display = 'none';
+            document.getElementById('homePage').style.display = 'block';
+            currentTest = null;
+        }
+
+        function showPage(pageName) {
+            const pages = ['homePage', 'aboutPage', 'contactPage', 'privacyPage', 'termsPage', 'typingPage'];
+            pages.forEach(page => {
+                document.getElementById(page).style.display = 'none';
+            });
+            document.getElementById(pageName).style.display = 'block';
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`[data-page="${pageName.replace('Page', '')}"]`)?.classList.add('active');
+            
+            window.scrollTo(0, 0);
+        }
+
+        document.querySelectorAll('.nav-link, .footer-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.getAttribute('data-page');
+                showPage(page + 'Page');
+            });
+        });
+
+        renderTests();
+    </script>
+</body>
+</html>
